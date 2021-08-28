@@ -36,7 +36,7 @@ const passwordReset = async (req, res) => {
         } else {
           res.json({
             mailSent: true,
-            message: "Verification link sent successfully. Check your mail.",
+            message: "Verification link sent succesfully. Check your mail.",
           });
         }
       });

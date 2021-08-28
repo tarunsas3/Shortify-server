@@ -27,16 +27,16 @@ const signup = async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.MAIL_ID,
-        pass: process.env.MAIL_PASS,
+        user: process.env.REACT_APP_MAIL_ID,
+        pass: process.env.REACT_APP_MAIL_PASS,
       },
     });
 
     // create mail
     const mail = {
-      from: process.env.MAIL_ID,
+      from: process.env.REACT_APP_MAIL_ID,
       to: req.body.email,
-      subject: "Account Activation - Shortify",
+      subject: "Account Activation - shortify",
       html: `<h2>Click on the following link to activate your profile</h2><a href="${activationURL}">Click here</a>`,
     };
 

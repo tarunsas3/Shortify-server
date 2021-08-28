@@ -9,7 +9,7 @@ const login = async (req, res) => {
         if (result.isActive) {
           res.json({
             loggedIn: true,
-            message: "Login successful",
+            message: "Login successfull",
           });
         } else {
           res.json({
