@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "env-cmd -f .env react-scripts start",
+    "start": "node app.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
