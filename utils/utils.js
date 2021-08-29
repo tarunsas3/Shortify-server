@@ -24,7 +24,7 @@ const generateRandomString = (length) => {
   return result.join("");
 };
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://shortify-it.netlify.app";
 
 module.exports = {
   hashPassword,
