@@ -12,7 +12,6 @@ const signup = async (req, res) => {
   if (!checkUserExists) {
     let randomString = generateRandomString(24);
 
-    // create new user
     const user = new User({
       email: req.body.email,
       password: hashedPassword,
@@ -23,7 +22,6 @@ const signup = async (req, res) => {
 
     let activationURL = `${BASE_URL}/activate/${randomString}`;
 
-    // create transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -32,15 +30,18 @@ const signup = async (req, res) => {
       },
     });
 
-    // create mail
     const mail = {
       from: process.env.REACT_APP_MAIL_ID,
       to: req.body.email,
       subject: "Account Activation - shortify",
-      html: `<h2>Click on the following link to activate your profile</h2><a href="${activationURL}">Click here</a>`,
+      html:
+        `<h2>Dear User,</h2>` +
+        `<p>Welcome to Shortify URL Shortner, One More Final Step before you become a member of the fastest growing family of 80,000+ users across 7 continents</p>` +
+        `<p>Lets get your started, click the link below to get started</p>` +
+        `<h2><a href="${activationURL}">Activate Account</a></h2>` +
+        `<p>Looking forward to see you soon, we are pumped</p>`,
     };
 
-    // send mail
     transporter.sendMail(mail, (err, info) => {
       if (err) {
         console.log(err);

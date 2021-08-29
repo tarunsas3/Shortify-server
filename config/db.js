@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const mongodbURL = `mongodb+srv://Tarun:wGWJoeWSdGDMZv7R@cluster0.4n8nv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const mongodbURL = `mongodb+srv://Tarun:${process.env.REACT_APP_DB_PASS}@cluster0.4n8nv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 mongoose.connect(
   mongodbURL,

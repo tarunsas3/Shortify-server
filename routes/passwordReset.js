@@ -9,7 +9,7 @@ const passwordReset = async (req, res) => {
       result.randomString = randomString;
       result.save();
       let resetURL = BASE_URL + "/verify/" + result._id + "/" + randomString;
-      // Code to send to OTP via mail
+
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -22,7 +22,12 @@ const passwordReset = async (req, res) => {
         from: process.env.MAIL_ID,
         to: req.body.email,
         subject: "Password Reset",
-        html: `<h2>Click on the following link to reset your password</h2><a href="${resetURL}">Click here</a>`,
+        html:
+          `<h2>Dear User,</h2>` +
+          `<p>Let's get your sorted, click the link below to reset your password</p>` +
+          `<h2><a href="${resetURL}">Reset Password</a></h2>` +
+          `<p>welcome back to Shortify URL Shortner, Reset your password and become a member of the fastest growing family of 80,000+ users across 7 continents</p>` +
+          `<p>Looking forward to see you soon. Glad you are back, we are pumped</p>`,
       };
 
       transporter.sendMail(mail, (err, info) => {
@@ -36,7 +41,7 @@ const passwordReset = async (req, res) => {
         } else {
           res.json({
             mailSent: true,
-            message: "Verification link sent succesfully. Check your mail.",
+            message: "Verification link sent successfully. Check your mail.",
           });
         }
       });

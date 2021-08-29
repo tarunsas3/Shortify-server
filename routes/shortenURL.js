@@ -6,7 +6,6 @@ const shortenURL = async (req, res) => {
   let randomID = generateRandomString(6);
   let shortURL = BASE_URL + "/l/" + randomID;
   if (!checkAlreadyExist) {
-    // create new link
     const link = new Link({
       longURL: req.body.longURL,
       shortURL: shortURL,
